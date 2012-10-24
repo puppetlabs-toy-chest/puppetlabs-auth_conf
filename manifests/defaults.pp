@@ -1,10 +1,13 @@
 class auth_conf::defaults($inventory = false, $console_master_certname = $certname) {
   include auth_conf
 
-  if $fact_is_puppetconsole == 'true' and $inventory == false {
+  if $fact_is_puppetconsole == 'true' {
     $real_inventory = true
   } else {
-    $real_inventory = false
+    $real_inventory = $inventory ? {
+      'true'  => true,
+      'false' => false,
+    }
   }
 
   auth_conf::acl { '^/catalog/([^/]+)$':
@@ -51,7 +54,7 @@ class auth_conf::defaults($inventory = false, $console_master_certname = $certna
     allow      => '*',
     order      => 070,
   }
-  
+
   auth_conf::acl { '/certificate_request':
     auth       => 'any',
     acl_method => ['find','save'],
