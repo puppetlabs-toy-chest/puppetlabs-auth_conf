@@ -7,18 +7,22 @@ define auth_conf::acl(
   $regex  = false,
   $environment = undef,
 ) {
-  
-  if $path == 'UNSET' {
-    $real_path = $name
+
+  if ! $::custom_auth_conf {
+    if $path == 'UNSET' {
+      $real_path = $name
+    } else {
+      $real_path = $path
+    }
+
+    validate_re( $auth, '(yes|no|on|off|any)')
+
+    concat::fragment { $title:
+      target  => $auth_conf::auth_conf_path,
+      content => template('auth_conf/auth_conf_acl.erb'),
+      order   => $order,
+    }
   } else {
-    $real_path = $path
-  }
-
-  validate_re( $auth, '(yes|no|on|off|any)')
-
-  concat::fragment { $title:
-    target  => $auth_conf::auth_conf_path,
-    content => template('auth_conf/auth_conf_acl.erb'),
-    order   => $order,
+    notify { "The ${$auth_conf::auth_conf_path} file has been manually modified. Refusing to overwrite.": }
   }
 }
