@@ -6,11 +6,14 @@ class auth_conf {
     default             => '/etc/puppet/auth.conf'
   }
 
-  if ! $::custom_auth_conf {
+
+  if $::custom_auth_conf == false {
+    include auth_conf::modified_warning
+  } else {
     concat { $auth_conf_path:
       owner => 0,
       group => 0,
-      mode  => 600,
+      mode  => 644,
     }
 
     concat::fragment { 'auth_conf_header':
@@ -18,7 +21,5 @@ class auth_conf {
       content => template('auth_conf/auth_conf_header.erb'),
       order   => 001,
     }
-  } else {
-    notify { "The ${$auth_conf::auth_conf_path} file has been manually modified. Refusing to overwrite.": }
   }
 }

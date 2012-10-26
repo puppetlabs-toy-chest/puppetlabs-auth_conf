@@ -8,7 +8,9 @@ define auth_conf::acl(
   $environment = undef,
 ) {
 
-  if ! $::custom_auth_conf {
+  if $::custom_auth_conf == false {
+    include auth_conf::modified_warning
+  } else {
     if $path == 'UNSET' {
       $real_path = $name
     } else {
@@ -22,7 +24,5 @@ define auth_conf::acl(
       content => template('auth_conf/auth_conf_acl.erb'),
       order   => $order,
     }
-  } else {
-    notify { "The ${$auth_conf::auth_conf_path} file has been manually modified. Refusing to overwrite.": }
   }
 }
