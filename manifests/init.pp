@@ -1,9 +1,12 @@
 class auth_conf {
   include concat::setup
 
-  $auth_conf_path = $puppetversion ? {
-    /Puppet Enterprise/ => '/etc/puppetlabs/puppet/auth.conf',
-    default             => '/etc/puppet/auth.conf'
+  $is_pe = str2bool($::is_pe)
+
+  $auth_conf_path = $is_pe ? {
+    true      => '/etc/puppetlabs/puppet/auth.conf',
+    false     => '/etc/puppet/auth.conf',
+    default   => '/etc/puppet/auth.conf'
   }
 
 
