@@ -4,9 +4,14 @@ class auth_conf::defaults($inventory = false, $console_master_certname = $certna
   if $fact_is_puppetconsole == 'true' {
     $real_inventory = true
   } else {
-    $real_inventory = $inventory ? {
-      'true'  => true,
-      'false' => false,
+    if is_string($inventory) {
+      $real_inventory = str2bool($inventory)
+    } else {
+      $real_inventory = $inventory ? {
+        true    => true,
+        false   => false,
+        default => false,
+      }
     }
   }
 
