@@ -14,7 +14,7 @@ Facter.add("custom_auth_conf") do
     auth_conf_prefix = Facter.value('puppetversion').include?('Puppet Enterprise') ? '/etc/puppetlabs' : '/etc'
     auth_conf_path = "#{auth_conf_prefix}/puppet/auth.conf"
 
-    unless File.exists? auth_conf_path
+    if File.exists? auth_conf_path
       contents = File.read("#{auth_conf_prefix}/puppet/auth.conf")
 
       # If the file is already managed by Puppet
@@ -24,9 +24,9 @@ Facter.add("custom_auth_conf") do
         contents.gsub!(/(path \/facts\nauth yes\nmethod save\nallow )(.+?)\n/m,'\1')
         new_contents = contents.map do |line| line.strip end.join
         if UNMODIFIED_SHAS.include?(Digest::SHA1.hexdigest new_contents)
-          'true'
-        else
           'false'
+        else
+          'true'
         end
       end
     else
