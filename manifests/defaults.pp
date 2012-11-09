@@ -1,4 +1,4 @@
-class auth_conf::defaults($inventory = false, $console_master_certname = $certname) {
+class auth_conf::defaults($inventory = false, $master_certname = $certname) {
   include auth_conf
 
   if $fact_is_puppetconsole == 'true' {
@@ -80,7 +80,7 @@ class auth_conf::defaults($inventory = false, $console_master_certname = $certna
       path       => '/facts',
       auth       => 'yes',
       acl_method => ['save'],
-      allow      => $console_master_certname,
+      allow      => $master_certname,
       order      => 095,
     }
   }
