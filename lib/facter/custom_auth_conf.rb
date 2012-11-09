@@ -1,4 +1,4 @@
-UNMODIFIED_SHAS = [
+unmodified_shas = [
 "b33f7dcc83f846618fdc61de3aee22d1ef5965e2", # 1.2.x auth.conf with console
 "36a1814cc92369841fd21d0ff4b204c922508f16", # 2.0.x auth.conf with console upgraded from 1.2.x
 "66cebfd351ade79878346076fd748e6d0a9337e5", # 2.0.x auth.conf with console
@@ -23,7 +23,7 @@ Facter.add("custom_auth_conf") do
       else
         contents.gsub!(/(path \/facts\nauth yes\nmethod save\nallow )(.+?)\n/m,'\1')
         new_contents = contents.map do |line| line.strip end.join
-        if UNMODIFIED_SHAS.include?(Digest::SHA1.hexdigest new_contents)
+        if unmodified_shas.include?(Digest::SHA1.hexdigest new_contents)
           'false'
         else
           'true'
