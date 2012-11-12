@@ -10,7 +10,7 @@ class auth_conf {
   }
 
 
-  if $::custom_auth_conf == false {
+  if $::custom_auth_conf == 'true' {
     include auth_conf::modified_warning
   } else {
     concat { $auth_conf_path:
