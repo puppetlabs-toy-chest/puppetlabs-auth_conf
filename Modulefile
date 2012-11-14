@@ -1,5 +1,5 @@
 name 'puppetlabs-auth_conf'
-version '0.0.4'
+version '0.0.5'
 source 'git://github.com/puppetlabs/puppetlabs-auth_conf'
 author 'puppetlabs'
 license 'Apache 2.0'
