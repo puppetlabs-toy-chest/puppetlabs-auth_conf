@@ -5,7 +5,6 @@ First we have to set up the directory that git repositories are cloned into.
 
 Run the following in your _master_ VM:
 
-    mkdir /opt/puppet-git-repos/
     puppet module install ripienaar-concat
 
 After doing that, use the following as an example for running the actual tests. The commands are run from the directory of
