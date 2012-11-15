@@ -66,6 +66,7 @@ modules = PuppetModules.new(options[:modules]).list
 
 step "Masters: Install Puppet Modules"
 masters = hosts.select { |host| host['roles'].include? 'master' }
+on masters, "mkdir -p /opt/puppet-git-repos"
 
 modules.each do |mod|
   if mod[:protocol] == :scp
