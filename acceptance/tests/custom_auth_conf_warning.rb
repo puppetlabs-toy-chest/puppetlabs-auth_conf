@@ -8,7 +8,7 @@ end
 
 step 'Modifying auth.conf'
 
-on master, "echo MODIFIED >> #{AUTH_CONF_PATH}"
+on master, "echo MODIFIED > #{AUTH_CONF_PATH}"
 
 step 'Running manifest'
 

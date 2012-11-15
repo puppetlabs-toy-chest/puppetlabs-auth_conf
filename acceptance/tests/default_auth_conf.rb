@@ -12,6 +12,12 @@ apply_manifest_on master, 'include auth_conf::defaults', {:catch_failures => tru
   fail_test('auth.conf should not be modified') if result.output.include? 'file has been manually modified. Refusing to overwrite.'
 end
 
+if master['roles'].include? 'dashboard'
+  auth_conf_md5 = '305d544f97712c81b646b98728a51800 '
+else
+  auth_conf_md5 = '6a77b26f8e3a262e2a306471688b4a83 '
+end
+
 on master, "md5sum #{AUTH_CONF_PATH}" do
-  fail_test('unexpected auth.conf content, should be the full default config') unless result.output.include? '305d544f97712c81b646b98728a51800 '
+  fail_test('unexpected auth.conf content, should be the full default config') unless result.output.include? auth_conf_md5
 end
