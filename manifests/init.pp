@@ -16,7 +16,7 @@ class auth_conf {
     concat { $auth_conf_path:
       owner => 0,
       group => 0,
-      mode  => 644,
+      mode  => '0644',
     }
 
     concat::fragment { 'auth_conf_header':
