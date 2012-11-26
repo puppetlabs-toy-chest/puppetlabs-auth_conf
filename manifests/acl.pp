@@ -8,7 +8,7 @@ define auth_conf::acl(
   $environment = undef,
 ) {
 
-  if $::custom_auth_conf == false {
+  if $::custom_auth_conf == 'true' {
     include auth_conf::modified_warning
   } else {
     if $path == 'UNSET' {
