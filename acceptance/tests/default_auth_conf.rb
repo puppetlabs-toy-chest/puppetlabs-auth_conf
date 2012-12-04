@@ -13,7 +13,7 @@ apply_manifest_on master, 'include auth_conf::defaults', {:catch_failures => tru
 end
 
 if master['roles'].include? 'dashboard'
-  auth_conf_md5 = '305d544f97712c81b646b98728a51800 '
+  auth_conf_md5 = '42cb4f821fbddbcde7779bb01c219dc6 '
 else
   auth_conf_md5 = '6a77b26f8e3a262e2a306471688b4a83 '
 end

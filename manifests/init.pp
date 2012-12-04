@@ -18,11 +18,5 @@ class auth_conf {
       group => 0,
       mode  => '0644',
     }
-
-    concat::fragment { 'auth_conf_header':
-      target  => $auth_conf_path,
-      content => template('auth_conf/auth_conf_header.erb'),
-      order   => 001,
-    }
   }
 }
