@@ -41,18 +41,6 @@ describe 'whether a custom auth_conf file is in use' do
     end
   end
 
-  describe "when auth.conf is managed by Puppet" do
-    before do
-      File.stubs(:exists?).with('/etc/puppet/auth.conf').returns(true)
-    end
-
-    it "should return false" do
-      File.stubs(:read).returns('# THIS FILE IS MANAGED BY PUPPET')
-
-      Facter.value(:custom_auth_conf).should == 'false'
-    end
-  end
-
   describe "when auth.conf is unmodified" do
     before do
       File.stubs(:exists?).with('/etc/puppet/auth.conf').returns(true)

@@ -12,7 +12,7 @@ on master, "echo MODIFIED > #{AUTH_CONF_PATH}"
 
 step 'Running "include auth_conf"'
 
-apply_manifest_on master, 'include auth_conf', {:catch_failures => true} do
+apply_manifest_on master, 'include auth_conf::defaults', {:catch_failures => true} do
   fail_test('no warning was emitted for a modified auth.conf when using "include auth_conf"') unless result.output.include? 'file has been manually modified. Refusing to overwrite.'
 end
 

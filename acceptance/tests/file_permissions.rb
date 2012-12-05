@@ -12,7 +12,7 @@ on master, "chmod 0600 #{AUTH_CONF_PATH}"
 
 step 'Running manifest'
 
-apply_manifest_on master, 'include auth_conf', {:catch_failures => true} do
+apply_manifest_on master, 'include auth_conf::defaults', {:catch_failures => true} do
   fail_test('auth.conf should not be modified') if result.output.include? 'file has been manually modified. Refusing to overwrite.'
 
   fail_test('auth.conf ended up with the wrong permissions') unless result.output.include? "mode changed '0600' to '0644'"
