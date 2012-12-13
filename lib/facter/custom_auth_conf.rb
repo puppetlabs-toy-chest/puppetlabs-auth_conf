@@ -3,7 +3,7 @@ unmodified_shas = [
 "36a1814cc92369841fd21d0ff4b204c922508f16", # 2.0.x auth.conf with console upgraded from 1.2.x
 "0d1983136def6909a244d6b1a68d863261343360", # 2.0.x auth.conf with console
 "ce5654da6b9b1e3dce3af43181d447dbc27e57bf", # 2.5.x and greater auth.conf with console
-"719db94b35e25d03ae4d52f9d1666653d529ecfa", # 2.7.0 console defaults from request_manager
+"4c76d6e7955d541025760aaa6107f1cb718bd6cb", # 2.7.0 console defaults from request_manager
 "79ccdd838e8a254d57e53001510002d7235109d2", # 1.2.x auth.conf without console
 "6a634811f8d4693383f7fd41eb8f9d081e2d5afe", # 2.0.x auth.conf without console upgraded from 1.2.x
 "97026c48a979dff803e6a82e313b4980c81dadde", # 2.0.x auth.conf without console
@@ -23,7 +23,7 @@ Facter.add("custom_auth_conf") do
       # strip out any comments
       contents = contents.lines.reject { |line| line =~ /^#.*$/ }.join("\n")
 
-      contents.gsub!(/(path \/facts\nauth yes\nmethod save\nallow )(.+?)\n/m,'\1')
+      contents.gsub!(/(path\s+\/facts\nmethod save\nauth yes\nallow )(.+?)\n/m,'\1')
       new_contents = contents.map do |line| line.strip end.join
       if unmodified_shas.include?(Digest::SHA1.hexdigest new_contents)
         'false'
