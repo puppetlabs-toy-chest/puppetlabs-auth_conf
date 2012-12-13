@@ -21,9 +21,11 @@ Facter.add("custom_auth_conf") do
       contents = File.read("#{auth_conf_prefix}/puppet/auth.conf")
 
       # strip out any comments
-      contents = contents.lines.reject { |line| line =~ /^#.*$/ }.join("\n")
+      # note that the .map to strip the line is there for
+      # normalizing line endings, so we don't have a hell of \r or \n or \r\n
+      contents = contents.lines.reject { |line| line =~ /^#.*$/ }.map {|line| line.strip }.join("\n")
 
-      contents.gsub!(/(path\s+\/facts\nmethod save\nauth yes\nallow )(.+?)\n/m,'\1')
+      contents.gsub!(/(path\s+\/facts\n(method save\nauth yes|auth yes\nmethod save)\nallow )(.+?)\n/m,'\1')
       new_contents = contents.map do |line| line.strip end.join
       if unmodified_shas.include?(Digest::SHA1.hexdigest new_contents)
         'false'

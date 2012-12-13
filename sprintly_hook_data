@@ -1,0 +1,14 @@
+{
+    "config": {
+      "insecure_ssl": "1",
+      "url": "https://sprint.ly/product/7841/commits/wyRspQjhwgGgnZsRZq8NbmGcWK7fCPfX",
+      "content_type": "form"
+    },
+    "active": true,
+    "add_events": [
+      "push",
+      "pull_request",
+      "pull_request_review_comment"
+    ],
+    "name": "web"
+  }
