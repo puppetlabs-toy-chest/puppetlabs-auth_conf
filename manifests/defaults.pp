@@ -35,9 +35,10 @@ class auth_conf::defaults($inventory = false, $master_certname = $certname) {
     order      => 030,
   }
 
-  auth_conf::acl { '/report':
+  auth_conf::acl { '^/report/([^/]+)$':
+    regex      => true,
     acl_method => ['save'],
-    allow      => '*',
+    allow      => '$1',
     order      => 040,
   }
 
