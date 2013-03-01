@@ -1,6 +1,6 @@
 unmodified_shas = [
 "34aadc7b6d075c5ad742b963734a8dd950da70e1", # 1.2.x auth.conf with console
-"d9b00b5c166f5c1da0f45fee6bc5821e315485ee", # 1.2.7 auth.conf with console
+"ddf2f67ec652c993fb981580113a0d72250c0f42", # 1.2.7 auth.conf with console
 "36a1814cc92369841fd21d0ff4b204c922508f16", # 2.0.x auth.conf with console upgraded from 1.2.x
 "0d1983136def6909a244d6b1a68d863261343360", # 2.0.x auth.conf with console
 "ce5654da6b9b1e3dce3af43181d447dbc27e57bf", # 2.5.x and greater auth.conf with console
@@ -10,7 +10,7 @@ unmodified_shas = [
 "6dd01047a244c8cbe81c1a87bec57ffa9e662104", # 2.7.2 console from auth_conf::defaults
 "406c1d87a802cafca1cd93b88de356e7de45e7ab", # 2.7.2 console from request_manager
 "79ccdd838e8a254d57e53001510002d7235109d2", # 1.2.x auth.conf without console
-"41e1e42ad696f8ea0e7ba83b60acd5cd2f2cff44", # 1.2.7 auth.conf master without console
+"f2bfbd8e535c03b61f502d6b194d44faa9d70a42", # 1.2.7 auth.conf master without console
 "6a634811f8d4693383f7fd41eb8f9d081e2d5afe", # 2.0.x auth.conf without console upgraded from 1.2.x
 "97026c48a979dff803e6a82e313b4980c81dadde", # 2.0.x auth.conf without console
 "c269f514bfe182c54ae0f3de72e280554d9d8530", # 2.5.x and greater auth.conf without console
