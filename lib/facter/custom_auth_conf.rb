@@ -38,7 +38,7 @@ Facter.add("custom_auth_conf") do
       contents = contents.lines.reject { |line| line =~ /^#.*$/ }.map {|line| line.strip }.join("\n")
 
       contents.gsub!(/(path\s+\/facts\n(method save\nauth yes|auth yes\nmethod save)\nallow )(.+?)\n/m,'\1')
-      new_contents = contents.map { |line| line.strip }.join
+      new_contents = contents.lines.map { |line| line.strip }.join
       if unmodified_shas.include?(Digest::SHA1.hexdigest new_contents)
         'false'
       else
