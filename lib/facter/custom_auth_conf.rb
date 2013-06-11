@@ -21,6 +21,8 @@ unmodified_shas = [
 "5be322a869e1d2c63e650a82636198ef2dd66a67", # 2.7.2 master without console from auth_conf::defaults
 "66dc5a85e33ba57f4bfe570371c76b43d04e607c", # 2.7.2 master without console from request_manager
 "82f1d56e7f69646c7b8bd2687121d31c44ce47b5", # 2.7.2 master upgraded from 1.2.7
+"5ef6af4a186f877d7e495a33fc7caa1cc7a2e12a", # 3.0.0 master
+"a9e13f5469eebc69b6ad84dfb7e531e41286d643", # 3.0.0 master using auth_conf and request_manager
 ]
 
 Facter.add("custom_auth_conf") do
