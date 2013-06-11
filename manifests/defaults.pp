@@ -1,19 +1,5 @@
-class auth_conf::defaults($inventory = false, $master_certname = $certname) {
+class auth_conf::defaults() {
   include auth_conf
-
-  if $fact_is_puppetconsole == 'true' {
-    $real_inventory = true
-  } else {
-    if is_string($inventory) {
-      $real_inventory = str2bool($inventory)
-    } else {
-      $real_inventory = $inventory ? {
-        true    => true,
-        false   => false,
-        default => false,
-      }
-    }
-  }
 
   auth_conf::acl { '^/catalog/([^/]+)$':
     regex      => true,
@@ -66,24 +52,6 @@ class auth_conf::defaults($inventory = false, $master_certname = $certname) {
     acl_method => ['find','save'],
     allow      => '*',
     order      => 080,
-  }
-
-  if $real_inventory {
-    auth_conf::acl { 'find-search-/facts':
-      path       => '/facts',
-      auth       => 'any',
-      acl_method => ['find','search'],
-      allow      => '*',
-      order      => 090,
-    }
-
-    auth_conf::acl { 'save-/facts':
-      path       => '/facts',
-      auth       => 'yes',
-      acl_method => ['save'],
-      allow      => $master_certname,
-      order      => 095,
-    }
   }
 
   auth_conf::acl { '/':
