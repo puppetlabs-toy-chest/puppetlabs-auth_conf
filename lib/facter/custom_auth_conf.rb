@@ -23,6 +23,7 @@ unmodified_shas = [
 "82f1d56e7f69646c7b8bd2687121d31c44ce47b5", # 2.7.2 master upgraded from 1.2.7
 "5ef6af4a186f877d7e495a33fc7caa1cc7a2e12a", # 3.0.0 master
 "a9e13f5469eebc69b6ad84dfb7e531e41286d643", # 3.0.0 master using auth_conf and request_manager
+"e5d11c2d6fbc9135a36c9c54c5fd7da92c42ba60", # 3.0.0 master using auth_conf, request_manager and license_status
 ]
 
 Facter.add("custom_auth_conf") do
