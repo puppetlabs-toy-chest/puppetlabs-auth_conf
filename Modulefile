@@ -7,4 +7,4 @@ summary 'Puppet management for auth.conf'
 description "Puppet module to configure and manage Puppet's auth.conf file"
 
 dependency 'puppetlabs/stdlib', '>= 2.5.1'
-dependency 'ripienaar/concat', '>= 0.2.0'
+dependency 'puppetlabs/concat', '>= 1.0.0'
