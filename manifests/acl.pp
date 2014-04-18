@@ -3,7 +3,7 @@ define auth_conf::acl(
   $acl_method = undef,
   $allow  = [],
   $auth   = 'yes',
-  $order  = '99',
+  $order  = '999',
   $regex  = false,
   $environment = undef,
 ) {
