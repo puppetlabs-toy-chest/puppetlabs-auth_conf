@@ -54,6 +54,13 @@ class auth_conf::defaults() {
     order      => '080',
   }
 
+  auth_conf::acl { '/v2.0/environments':
+    auth       => 'yes',
+    acl_method => ['find'],
+    allow      => '*',
+    order      => '081',
+  }
+
   auth_conf::acl { '/':
     auth  => 'any',
     order => '100',
